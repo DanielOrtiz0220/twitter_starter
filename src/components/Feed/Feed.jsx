@@ -4,7 +4,13 @@ import TweetBox from "../TweetBox/TweetBox";
 import "./Feed.css";
 import { useEffect } from "react";
 
-export default function Feed({ tweets, setTweets, userProfile }) {
+export default function Feed({
+  tweets,
+  setTweets,
+  userProfile,
+  tweetText,
+  setTweetText,
+}) {
   useEffect(() => {
     console.log(tweets);
   }, []);
@@ -12,7 +18,8 @@ export default function Feed({ tweets, setTweets, userProfile }) {
     <div className="col feed">
       {}
       <TweetBox
-        text={tweets.text}
+        tweetText={tweetText}
+        setTweetText={setTweetText}
         tweets={tweets}
         setTweets={setTweets}
         userProfile={userProfile}

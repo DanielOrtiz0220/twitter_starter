@@ -3,29 +3,39 @@ import TweetInput from "./TweetInput";
 import "./TweetBox.css";
 
 export default function TweetBox({
-  text,
   tweets,
   setTweets,
   userProfile,
   tweetLength,
+  tweetText,
+  setTweetText,
 }) {
-  const handleOnSubmit = () => {
-    var newTweet = {
+  function handleOnTweetTextChange(changeEvent) {
+    setTweetText(changeEvent.target.value); // important stuff, make sure to review later
+  }
 
-    name: userProfile.name,
-    handle: userProfile.handle,
-    text: "",
-    comments: 0,
-    retweets: 0,
-    likes: 0,
-    id: tweetLength,
-    }
+  function handleOnSubmit() {
+    var newTweet = {
+      id: tweets.length,
+      name: userProfile.name,
+      handle: userProfile.handle,
+      text: tweetText,
+      comments: 0,
+      retweets: 0,
+      likes: 0,
+    };
 
     setTweets([...tweets, newTweet]);
-  };
+    setTweetText("");
+  }
   return (
     <div className="tweet-box">
-      <TweetInput text={text} setTweets={setTweets} userProfile={userProfile} />
+      <TweetInput
+        value={tweetText}
+        setTweets={setTweets}
+        userProfile={userProfile}
+        handleOnChange={handleOnTweetTextChange}
+      />
 
       <div className="tweet-box-footer">
         <TweetBoxIcons />

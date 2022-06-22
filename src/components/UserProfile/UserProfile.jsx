@@ -8,7 +8,10 @@ export default function UserProfile({ userProfile }) {
       <div className="card">
         <div className="card-bg" />
         <CardContent name={userProfile.name} handle={userProfile.handle} />
-        <CardFooter numTweets={userProfile.numTweets} numFollowers = {userProfile.numFollowers}/>
+        <CardFooter
+          numTweets={userProfile.numTweets}
+          numFollowers={userProfile.numFollowers}
+        />
       </div>
     </div>
   );
