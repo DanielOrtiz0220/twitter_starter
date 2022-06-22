@@ -21,10 +21,6 @@ export default function Navbar({ navLinks }) {
 }
 
 export function NavLinks({ navLinks }) {
-  useEffect(() => {
-    console.log(navLinks + " here is my navLinks in the NavLinkSSSS component");
-  }, []);
-
   return (
     <ul className="nav-links">
       {navLinks.map((link, idx) => {
@@ -35,9 +31,6 @@ export function NavLinks({ navLinks }) {
 }
 
 export function NavLink({ navLink }) {
-  useEffect(() => {
-    console.log(navLink + " here is my navLink in the NavLink component");
-  }, []);
   return (
     <li className={navLink.className}>
       <i className={navLink.icon}></i>
