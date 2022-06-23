@@ -11,21 +11,20 @@ export default function Feed({
   tweetText,
   setTweetText,
 }) {
-  useEffect(() => {
-    console.log(tweets);
-  }, []);
+  // useEffect(() => {
+  //   console.log(tweets);
+  // }, []);
   return (
     <div className="col feed">
-      {}
-      <TweetBox
-        tweetText={tweetText}
-        setTweetText={setTweetText}
-        tweets={tweets}
-        setTweets={setTweets}
-        userProfile={userProfile}
-        tweetLength={tweets.length}
-      />
-
+      {
+        <TweetBox
+          tweetText={tweetText}
+          setTweetText={setTweetText}
+          tweets={tweets}
+          setTweets={setTweets}
+          userProfile={userProfile}
+        />
+      }
       <div className="see-new-tweets beet">
         <p>
           See <span>{13}</span> New Tweets

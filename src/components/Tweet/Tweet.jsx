@@ -1,7 +1,7 @@
-import * as React from "react"
-import AvatarIcon from "../AvatarIcon/AvatarIcon"
-import { formatLikes } from "../../utils/format"
-import "./Tweet.css"
+import * as React from "react";
+import AvatarIcon from "../AvatarIcon/AvatarIcon";
+import { formatLikes } from "../../utils/format";
+import "./Tweet.css";
 
 export default function Tweet({ tweet }) {
   return (
@@ -11,12 +11,17 @@ export default function Tweet({ tweet }) {
       </div>
 
       <div className="tweet-content">
-        <TweetUserInfo name = {tweet.name} handle = {tweet.handle}/>
-        <p className="tweet-text"></p>
-        <TweetFooter numComments={tweet.comments} numRetweets = {tweet.retweets} numLikes = {tweet.likes}/>
+        {/* for some reason, the "tweet-text" <p> tag below didn't have {tweet.text} inside, I didn't think about it */}
+        <TweetUserInfo name={tweet.name} handle={tweet.handle} />
+        <p className="tweet-text">{tweet.text}</p>
+        <TweetFooter
+          numComments={tweet.comments}
+          numRetweets={tweet.retweets}
+          numLikes={tweet.likes}
+        />
       </div>
     </div>
-  )
+  );
 }
 
 export function TweetUserInfo({ name, handle }) {
@@ -30,7 +35,7 @@ export function TweetUserInfo({ name, handle }) {
       </div>
       <i className="fa fa-angle-down"></i>
     </div>
-  )
+  );
 }
 
 export function TweetFooter({ numComments, numRetweets, numLikes }) {
@@ -52,5 +57,5 @@ export function TweetFooter({ numComments, numRetweets, numLikes }) {
         <i className="fa fa-envelope"></i>
       </span>
     </div>
-  )
+  );
 }

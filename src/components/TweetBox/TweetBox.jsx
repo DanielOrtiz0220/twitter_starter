@@ -15,7 +15,7 @@ export default function TweetBox({
   }
 
   function handleOnSubmit() {
-    var newTweet = {
+    const newTweet = {
       id: tweets.length,
       name: userProfile.name,
       handle: userProfile.handle,
@@ -25,6 +25,7 @@ export default function TweetBox({
       likes: 0,
     };
 
+    userProfile.numTweets += 1;
     setTweets([...tweets, newTweet]);
     setTweetText("");
   }
@@ -32,15 +33,20 @@ export default function TweetBox({
     <div className="tweet-box">
       <TweetInput
         value={tweetText}
-        setTweets={setTweets}
-        userProfile={userProfile}
         handleOnChange={handleOnTweetTextChange}
       />
 
       <div className="tweet-box-footer">
         <TweetBoxIcons />
-        <TweetCharacterCount />
-        <TweetSubmitButton handleOnSubmit={handleOnSubmit} />
+        <TweetCharacterCount
+          tweetTextLength={tweetText.length}
+          inputLengthEqualZero={tweetText.length === 0}
+        />
+        <TweetSubmitButton
+          handleOnSubmit={handleOnSubmit}
+          tweetTextLength={tweetText.length}
+          deactivate={tweetText.length == 0 || tweetText.length > 140}
+        />
       </div>
     </div>
   );
@@ -57,16 +63,27 @@ export function TweetBoxIcons() {
   );
 }
 
-export function TweetCharacterCount(props) {
+export function TweetCharacterCount({ tweetTextLength, inputLengthEqualZero }) {
   // ADD CODE HERE
-  return <span></span>;
+  return inputLengthEqualZero ? null : (
+    <span
+      className="tweet-length"
+      style={{ color: tweetTextLength > 140 ? "red" : "black" }}
+    >
+      {140 - tweetTextLength}
+    </span>
+  );
 }
 
-export function TweetSubmitButton({ handleOnSubmit }) {
+export function TweetSubmitButton({ handleOnSubmit, deactivate }) {
   return (
     <div className="tweet-submit">
       <i className="fas fa-plus-circle"></i>
-      <button className="tweet-submit-button" onClick={handleOnSubmit}>
+      <button
+        className="tweet-submit-button"
+        onClick={handleOnSubmit}
+        disabled={deactivate}
+      >
         Tweet
       </button>
     </div>

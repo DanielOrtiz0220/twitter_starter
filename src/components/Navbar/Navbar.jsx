@@ -4,9 +4,9 @@ import "./Navbar.css";
 import { useEffect, useState } from "react";
 
 export default function Navbar({ navLinks }) {
-  useEffect(() => {
-    console.log(navLinks + " here is my navLinks in the NAVBAR component");
-  }, []);
+  // useEffect(() => {
+  //   console.log(navLinks + " here is my navLinks in the NAVBAR component");
+  // }, []);
 
   return (
     <nav>

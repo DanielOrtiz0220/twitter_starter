@@ -12,7 +12,7 @@ export default function TweetInput({ value, handleOnChange }) {
         placeholder="What's Happening?"
         onChange={handleOnChange}
         value={value}
-      >{value}</textarea>
+      ></textarea>
 
       <SmileIcon />
     </div>
